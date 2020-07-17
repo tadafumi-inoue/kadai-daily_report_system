@@ -5,7 +5,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>日報管理システム</title>
 <link rel="stylesheet" href="<c:url value='/css/rest.css' />">
 <link rel="stylesheet" href="<c:url value='/css/style.css' />">
 
