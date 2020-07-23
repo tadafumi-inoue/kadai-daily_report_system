@@ -45,7 +45,8 @@ public class EmployeeUpdateServlet extends HttpServlet {
 
             // 現在の値と異なる社員番号が入力されていたら重複チェックを行う指定をする
             Boolean code_duplicate_check = true;
-            if (e.getCode().equals(request.getParameter("code"))) {
+            if(e.getCode().equals(request.getParameter("code"))) {
+                code_duplicate_check = false;
             } else {
                 e.setCode(request.getParameter("code"));
             }
