@@ -19,6 +19,16 @@ public class ReportValidator {
             errors.add(content_error);
         }
 
+        String work_time_error = validateWork_time(r.getWork_time());
+        if(!work_time_error.equals("")){
+            errors.add(work_time_error);
+        }
+
+        String leave_time_error = validateLeave_time(r.getLeave_time());
+        if(!leave_time_error.equals("")){
+            errors.add(leave_time_error);
+        }
+
         return errors;
     }
 
@@ -37,4 +47,19 @@ public class ReportValidator {
 
         return "";
     }
-}
+
+    private static String validateWork_time(String work_time){
+        if(work_time == null || work_time.equals("")) {
+            return "出勤時間を入力してください。";
+        }
+        return "";
+     }
+
+    private static String validateLeave_time(String leave_time){
+        if(leave_time == null || leave_time.equals("")){
+            return "退勤時間を入力してください。";
+        }
+        return "";
+    }
+
+    }

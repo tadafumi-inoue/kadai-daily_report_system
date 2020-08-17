@@ -53,7 +53,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //認証結果を格納する
-        Boolean check_result = false;
+       Boolean check_result = false;
 
         String code = request.getParameter("code");
         String plain_pass = request.getParameter("password");
@@ -99,8 +99,7 @@ public class LoginServlet extends HttpServlet {
 
             request.getSession().setAttribute("flush", "ログインしました。");
             response.sendRedirect(request.getContextPath() + "/");
-        }
-
+       }
     }
 
 }

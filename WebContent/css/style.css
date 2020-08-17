@@ -134,15 +134,30 @@ table#report_list .report_date {
 }
 
 table#report_list .report_title {
-    width: 37%;
+    width: 40%;
 }
 
 table#report_list .report_action {
-    width: 13%;
+    width: 20%;
+}
+table#report_list .report_good_count {
+    width: 10%;
+}
+table#report_list .report_bad_count {
+    width: 10%;
 }
 pre {
     font-family: "Hiragino Kaku Gothic Pro",Meiryo,"MS PGothic",Helvetica,Arial,sans-serif;
     }
 h3 {
     font-size: larger;
+}
+table#suppliers_list th {
+    width: 30%;
+    padding: 10px 2%;
+}
+
+table#suppliers_list td {
+    width: 29%;
+    padding: 10px 2%;
 }

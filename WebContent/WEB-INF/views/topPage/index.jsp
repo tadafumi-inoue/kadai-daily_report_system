@@ -18,6 +18,7 @@
                     <th class="report_date">日付</th>
                     <th class="report_title">タイトル</th>
                     <th class="report_action">操作</th>
+                    <th class="report_app_flag">承認状態</th>
                 </tr>
                 <c:forEach var="report" items="${reports}" varStatus="status">
                     <tr class="row${status.count % 2}">
@@ -28,6 +29,15 @@
                         <td class="report_title">${report.title}</td>
                         <td class="report_action"><a
                             href="<c:url value='/reports/show?id=${report.id}' />">詳細を見る</a></td>
+                        <c:choose>
+                        <c:when test= "${report.app_flag != 0}">
+                        <td class="report_app_flag">承認済み
+                        </td>
+                        </c:when>
+                        <c:otherwise><td class="report_app_flag">未承認
+                        </td>
+                        </c:otherwise>
+                        </c:choose>
                     </tr>
                 </c:forEach>
             </tbody>

@@ -37,5 +37,41 @@
 <br />
 <br />
 
+<label for="client_title">取引先企業</label>
+<br />
+<select name="client_title">
+<c:forEach var="client" items="${client}">
+<option><c:out value="${client.name}" /></option>
+</c:forEach>
+
+</select>
+
+<br />
+<br />
+
+<label for="client_content">商談内容</label>
+<br />
+<textarea name="client_content" rows="10" cols="50">${report.client_content}</textarea>
+<br />
+<br />
+
+<label for="work_time">出勤時間</label>
+<br />
+<input type="time" name="work_time" value="${report.work_time}" />
+<br />
+<label for="leave_time">退勤時間</label>
+<br />
+<input type="time" name="leave_time" value="${report.leave_time}" />
+<br />
+<br />
+
 <input type="hidden" name="_token" value="${_token}" />
+<c:choose>
+<c:when test="${sessionScope.login_employee.admin_flag == 0}">
+<input type="hidden" name="app_flag" value="0" />
+</c:when>
+<c:otherwise>
+<input type="hidden" name="app_flag" value="1" />
+</c:otherwise>
+</c:choose>
 <button type="submit">投稿</button>

@@ -32,6 +32,10 @@ import javax.persistence.Table;
     @NamedQuery(
             name = "getMyReportsCount",
             query = "SELECT COUNT(r) FROM Report AS r WHERE r.employee = :employee"
+            ),
+    @NamedQuery(
+            name = "getFollowAllReports",
+            query = "SELECT r FROM Report AS r WHERE r.employee = :f_emp ORDER BY r.id DESC"
             )
 })
 @Entity
@@ -48,6 +52,9 @@ public class Report {
     @Column(name = "report_date", nullable = false)
     private Date report_date;
 
+    @Column(name = "app_flag",nullable = false)
+    private Integer app_flag;
+
     @Column(name = "title", length = 255, nullable = false)
     private String title;
 
@@ -55,11 +62,24 @@ public class Report {
     @Column(name = "content", nullable = false)
     private String content;
 
+    @Column(name= "client_title",length = 255, nullable = true)
+    private String client_title;
+
+    @Lob
+    @Column(name = "client_content", nullable = true)
+    private String client_content;
+
     @Column(name = "created_at", nullable = false)
     private Timestamp created_at;
 
     @Column(name = "updated_at", nullable = false)
     private Timestamp updated_at;
+
+    @Column(name = "work_time", nullable = false)
+    private String work_time;
+
+    @Column(name = "leave_time", nullable = false)
+    private String leave_time;
 
     public Integer getId() {
         return id;
@@ -116,4 +136,48 @@ public class Report {
     public void setUpdated_at(Timestamp updated_at) {
         this.updated_at = updated_at;
     }
+
+    public String getWork_time() {
+        return work_time;
+    }
+
+    public void setWork_time(String work_time) {
+        this.work_time = work_time;
+    }
+
+    public String getLeave_time() {
+        return leave_time;
+    }
+
+    public void setLeave_time(String leave_time) {
+        this.leave_time = leave_time;
+    }
+
+    public String getClient_title() {
+        return client_title;
+    }
+
+    public void setClient_title(String client_title) {
+        this.client_title = client_title;
+    }
+
+    public String getClient_content() {
+        return client_content;
+    }
+
+    public void setClient_content(String client_content) {
+        this.client_content = client_content;
+    }
+
+    public Integer getApp_flag() {
+        return app_flag;
+    }
+
+    public void setApp_flag(Integer app_flag) {
+        this.app_flag = app_flag;
+    }
+
+
+
+
 }

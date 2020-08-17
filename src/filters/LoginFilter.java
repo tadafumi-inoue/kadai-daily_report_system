@@ -40,7 +40,7 @@ public class LoginFilter implements Filter {
      */
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-        String context_path = ((HttpServletRequest) request).getContextPath();
+      String context_path = ((HttpServletRequest) request).getContextPath();
         String servlet_path = ((HttpServletRequest) request).getServletPath();
 
         if (!servlet_path.matches("/css.*")) { //CSSフォルダ内は除外する
@@ -61,8 +61,12 @@ public class LoginFilter implements Filter {
                 if (servlet_path.matches("/employees.*") && e.getAdmin_flag() == 0) {
                     ((HttpServletResponse)response).sendRedirect(context_path + "/");
                     return;
+                } else if (servlet_path.matches("/clients.*") && e.getAdmin_flag() == 0){
+                    ((HttpServletResponse)response).sendRedirect(context_path + "/");
+                    return;
                 }
-            } else {
+            }
+            else {
                 //ログイン画面について
                 //ログインしているのにログイン画面を表示させようとした場合は
                 //システムのトップページにリダイレクト
@@ -70,6 +74,7 @@ public class LoginFilter implements Filter {
                     ((HttpServletResponse) response).sendRedirect(context_path + "/");
                    return;
                 }
+
             }
         }
            chain.doFilter(request,response);
